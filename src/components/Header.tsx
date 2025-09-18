@@ -51,7 +51,15 @@ const Header = () => {
 
           {/* CTA Button - Desktop */}
           <div className="hidden md:block">
-            <Button variant="hero" size="lg">
+            <Button 
+              variant="hero" 
+              size="lg"
+              onClick={() => {
+                document.getElementById('waitlist-form')?.scrollIntoView({ 
+                  behavior: 'smooth' 
+                });
+              }}
+            >
               Join the Waitlist
             </Button>
           </div>
@@ -103,7 +111,17 @@ const Header = () => {
                 Use Cases
               </a>
               <div className="pt-4">
-                <Button variant="hero" size="lg" className="w-full">
+                <Button 
+                  variant="hero" 
+                  size="lg" 
+                  className="w-full"
+                  onClick={() => {
+                    document.getElementById('waitlist-form')?.scrollIntoView({ 
+                      behavior: 'smooth' 
+                    });
+                    setIsMenuOpen(false);
+                  }}
+                >
                   Join the Waitlist
                 </Button>
               </div>

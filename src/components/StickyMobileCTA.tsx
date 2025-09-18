@@ -11,21 +11,21 @@ const StickyMobileCTA = () => {
       const heroHeight = window.innerHeight;
       const scrolled = window.scrollY;
       
-      // Show when scrolled past hero, hide when near the final CTA section
-      const finalCTASection = document.querySelector('#final-cta');
-      const finalCTATop = finalCTASection?.getBoundingClientRect().top || 0;
+      // Show when scrolled past hero, hide when near the waitlist form section
+      const waitlistFormSection = document.getElementById('waitlist-form');
+      const waitlistFormTop = waitlistFormSection?.getBoundingClientRect().top || 0;
       
-      setIsVisible(scrolled > heroHeight * 0.8 && finalCTATop > 200);
+      setIsVisible(scrolled > heroHeight * 0.8 && waitlistFormTop > 200);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToFinalCTA = () => {
-    const finalCTASection = document.querySelector('#final-cta');
-    if (finalCTASection) {
-      finalCTASection.scrollIntoView({ 
+  const scrollToWaitlistForm = () => {
+    const waitlistForm = document.getElementById('waitlist-form');
+    if (waitlistForm) {
+      waitlistForm.scrollIntoView({ 
         behavior: 'smooth',
         block: 'start'
       });
@@ -45,7 +45,7 @@ const StickyMobileCTA = () => {
           <Button 
             variant="hero" 
             size="sm" 
-            onClick={scrollToFinalCTA}
+            onClick={scrollToWaitlistForm}
             className="flex-shrink-0"
           >
             Join Now
