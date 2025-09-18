@@ -7,7 +7,11 @@ import { useToast } from "@/hooks/use-toast";
 import { CheckCircle, ArrowRight, Sparkles, Shield } from "lucide-react";
 
 const FinalCTA = () => {
-  const [email, setEmail] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    purpose: ""
+  });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
@@ -15,7 +19,7 @@ const FinalCTA = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!email) {
+    if (!formData.email) {
       toast({
         title: "Email required",
         description: "Please enter your email address to join the waitlist.",
@@ -24,7 +28,7 @@ const FinalCTA = () => {
       return;
     }
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       toast({
         title: "Invalid email",
         description: "Please enter a valid email address.",
@@ -33,18 +37,77 @@ const FinalCTA = () => {
       return;
     }
 
+    if (!formData.purpose.trim()) {
+      toast({
+        title: "Purpose required",
+        description: "Please tell us how you plan to use Neura AI.",
+        variant: "destructive"
+      });
+      return;
+    }
+
     setIsLoading(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitted(true);
-    setIsLoading(false);
-    
-    toast({
-      title: "Welcome to the waitlist!",
-      description: "We'll notify you as soon as Neura AI is available.",
-    });
+    try {
+      // Send to Discord webhook
+      const discordPayload = {
+        embeds: [{
+          title: "🚀 New Neura AI Waitlist Signup",
+          color: 0x3b82f6,
+          fields: [
+            {
+              name: "Name",
+              value: formData.name || "Not provided",
+              inline: true
+            },
+            {
+              name: "Email",
+              value: formData.email,
+              inline: true
+            },
+            {
+              name: "Purpose",
+              value: formData.purpose,
+              inline: false
+            }
+          ],
+          timestamp: new Date().toISOString()
+        }]
+      };
+
+      const response = await fetch("https://discord.com/api/webhooks/1418048569025232942/n_vrx9_32mwLw1CgllNvSkMW4Hhl5zqberPY_5CG2mN8w6wOJnX5FsQ4-7vOebKiPf3-", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(discordPayload),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send to Discord");
+      }
+
+      setIsSubmitted(true);
+      
+      toast({
+        title: "Welcome to the waitlist!",
+        description: "Redirecting you to our Discord community...",
+      });
+
+      // Redirect to Discord after a short delay
+      setTimeout(() => {
+        window.open("https://discord.gg/invite-link", "_blank");
+      }, 2000);
+
+    } catch (error) {
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or contact us directly.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   if (isSubmitted) {
@@ -65,7 +128,7 @@ const FinalCTA = () => {
               </p>
               <div className="bg-card/80 backdrop-blur-sm rounded-xl p-6 max-w-md mx-auto">
                 <p className="text-sm text-muted-foreground">
-                  Confirmation sent to: <strong className="text-foreground">{email}</strong>
+                  Confirmation sent to: <strong className="text-foreground">{formData.email}</strong>
                 </p>
               </div>
             </div>
@@ -127,35 +190,53 @@ const FinalCTA = () => {
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="flex flex-col sm:flex-row gap-4">
+                  <div className="space-y-4">
                     <Input
-                      type="email"
-                      placeholder="Enter your professional email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="flex-1 h-12 px-4 bg-background/50 border-border/50 focus:border-primary"
+                      type="text"
+                      placeholder="Your name (optional)"
+                      value={formData.name}
+                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      className="h-12 px-4 bg-background/50 border-border/50 focus:border-primary"
                       disabled={isLoading}
                     />
-                    <Button 
-                      type="submit" 
-                      variant="hero" 
-                      size="lg" 
+                    <Input
+                      type="email"
+                      placeholder="Enter your professional email *"
+                      value={formData.email}
+                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      className="h-12 px-4 bg-background/50 border-border/50 focus:border-primary"
                       disabled={isLoading}
-                      className="whitespace-nowrap"
-                    >
-                      {isLoading ? (
-                        <>
-                          <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2"></div>
-                          Joining...
-                        </>
-                      ) : (
-                        <>
-                          Join Waitlist
-                          <ArrowRight className="w-4 h-4 ml-2" />
-                        </>
-                      )}
-                    </Button>
+                      required
+                    />
+                    <Input
+                      type="text"
+                      placeholder="How do you plan to use Neura AI? *"
+                      value={formData.purpose}
+                      onChange={(e) => setFormData({...formData, purpose: e.target.value})}
+                      className="h-12 px-4 bg-background/50 border-border/50 focus:border-primary"
+                      disabled={isLoading}
+                      required
+                    />
                   </div>
+                  <Button 
+                    type="submit" 
+                    variant="hero" 
+                    size="lg" 
+                    disabled={isLoading}
+                    className="w-full"
+                  >
+                    {isLoading ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2"></div>
+                        Joining...
+                      </>
+                    ) : (
+                      <>
+                        Join Waitlist
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </>
+                    )}
+                  </Button>
                   <p className="text-sm text-muted-foreground">
                     We'll only email you about Neura AI updates. No spam, ever.
                   </p>
