@@ -81,47 +81,86 @@ const ChallengeSolution = () => {
             {/* Interactive Scattered Information Visualization */}
             <div className="order-1 lg:order-2 flex justify-center">
               <div className="relative h-80 w-full max-w-md">
+                {/* Connecting lines to center */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
+                  {/* Line to top-left (Emails) */}
+                  <line 
+                    x1="50%" y1="50%" 
+                    x2="25%" y2="20%" 
+                    stroke="hsl(var(--destructive))" 
+                    strokeWidth="2" 
+                    strokeDasharray="4,4"
+                    opacity="0.4"
+                    className="animate-pulse"
+                  />
+                  {/* Line to top-right (Documents) */}
+                  <line 
+                    x1="50%" y1="50%" 
+                    x2="75%" y2="25%" 
+                    stroke="hsl(var(--destructive))" 
+                    strokeWidth="2" 
+                    strokeDasharray="4,4"
+                    opacity="0.4"
+                    className="animate-pulse"
+                    style={{animationDelay: "0.5s"}}
+                  />
+                  {/* Line to bottom-left (Calendar) */}
+                  <line 
+                    x1="50%" y1="50%" 
+                    x2="25%" y2="80%" 
+                    stroke="hsl(var(--destructive))" 
+                    strokeWidth="2" 
+                    strokeDasharray="4,4"
+                    opacity="0.4"
+                    className="animate-pulse"
+                    style={{animationDelay: "1s"}}
+                  />
+                  {/* Line to bottom-right (Web) */}
+                  <line 
+                    x1="50%" y1="50%" 
+                    x2="75%" y2="75%" 
+                    stroke="hsl(var(--destructive))" 
+                    strokeWidth="2" 
+                    strokeDasharray="4,4"
+                    opacity="0.4"
+                    className="animate-pulse"
+                    style={{animationDelay: "1.5s"}}
+                  />
+                </svg>
+
                 {/* Central meeting bubble */}
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center border-2 border-primary/30 z-10">
                   <span className="text-sm font-medium text-primary">Meeting</span>
                 </div>
 
-                {/* Scattered information tiles - animated */}
-                <div className="absolute top-4 left-8 animate-float">
-                  <Card className="p-3 bg-card/80 backdrop-blur-sm border border-destructive/20 shadow-lg hover-lift">
-                    <Mail className="w-6 h-6 text-destructive mb-2" />
-                    <span className="text-sm font-medium">Emails</span>
+                {/* Scattered information tiles - uniform size and positioned */}
+                <div className="absolute top-4 left-4 animate-float">
+                  <Card className="w-20 h-20 flex flex-col items-center justify-center p-2 bg-card/80 backdrop-blur-sm border border-destructive/20 shadow-lg hover-lift">
+                    <Mail className="w-6 h-6 text-destructive mb-1" />
+                    <span className="text-xs font-medium text-center">Emails</span>
                   </Card>
                 </div>
 
-                <div className="absolute top-12 right-6 animate-float" style={{animationDelay: "0.5s"}}>
-                  <Card className="p-3 bg-card/80 backdrop-blur-sm border border-destructive/20 shadow-lg hover-lift">
-                    <FileText className="w-6 h-6 text-destructive mb-2" />
-                    <span className="text-sm font-medium">Documents</span>
+                <div className="absolute top-8 right-4 animate-float" style={{animationDelay: "0.5s"}}>
+                  <Card className="w-20 h-20 flex flex-col items-center justify-center p-2 bg-card/80 backdrop-blur-sm border border-destructive/20 shadow-lg hover-lift">
+                    <FileText className="w-6 h-6 text-destructive mb-1" />
+                    <span className="text-xs font-medium text-center">Docs</span>
                   </Card>
                 </div>
 
-                <div className="absolute bottom-8 left-4 animate-float" style={{animationDelay: "1s"}}>
-                  <Card className="p-3 bg-card/80 backdrop-blur-sm border border-destructive/20 shadow-lg hover-lift">
-                    <Calendar className="w-6 h-6 text-destructive mb-2" />
-                    <span className="text-sm font-medium">Calendar</span>
+                <div className="absolute bottom-12 left-4 animate-float" style={{animationDelay: "1s"}}>
+                  <Card className="w-20 h-20 flex flex-col items-center justify-center p-2 bg-card/80 backdrop-blur-sm border border-destructive/20 shadow-lg hover-lift">
+                    <Calendar className="w-6 h-6 text-destructive mb-1" />
+                    <span className="text-xs font-medium text-center">Calendar</span>
                   </Card>
                 </div>
 
-                <div className="absolute bottom-6 right-8 animate-float" style={{animationDelay: "1.5s"}}>
-                  <Card className="p-3 bg-card/80 backdrop-blur-sm border border-destructive/20 shadow-lg hover-lift">
-                    <Globe className="w-6 h-6 text-destructive mb-2" />
-                    <span className="text-sm font-medium">Web</span>
+                <div className="absolute bottom-8 right-4 animate-float" style={{animationDelay: "1.5s"}}>
+                  <Card className="w-20 h-20 flex flex-col items-center justify-center p-2 bg-card/80 backdrop-blur-sm border border-destructive/20 shadow-lg hover-lift">
+                    <Globe className="w-6 h-6 text-destructive mb-1" />
+                    <span className="text-xs font-medium text-center">Web</span>
                   </Card>
                 </div>
-
-                {/* Connecting lines showing disconnection */}
-                <svg className="absolute inset-0 w-full h-full opacity-30 pointer-events-none">
-                  <defs>
-                    <path id="swirl" d="M 50,50 Q 100,20 150,50 T 250,50" stroke="currentColor" strokeWidth="2" fill="none" className="text-destructive/40" />
-                  </defs>
-                  <use href="#swirl" className="animate-pulse" />
-                </svg>
               </div>
             </div>
           </div>
