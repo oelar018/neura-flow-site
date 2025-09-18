@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import ChallengeSolution from "@/components/ChallengeSolution";
 import Features from "@/components/Features";
+import UseCases from "@/components/UseCases";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
@@ -67,6 +68,7 @@ const Index = () => {
         <Hero />
         <ChallengeSolution />
         <Features />
+        <UseCases />
         <div id="final-cta">
           <FinalCTA />
         </div>

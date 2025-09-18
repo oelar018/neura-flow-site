@@ -35,6 +35,12 @@ const Header = () => {
             >
               Features
             </a>
+            <a 
+              href="#use-cases" 
+              className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+            >
+              Use Cases
+            </a>
           </nav>
 
           {/* CTA Button - Desktop */}
@@ -83,6 +89,13 @@ const Header = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Features
+              </a>
+              <a 
+                href="#use-cases" 
+                className="text-muted-foreground hover:text-foreground transition-colors font-medium py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Use Cases
               </a>
               <div className="pt-4">
                 <Button 
