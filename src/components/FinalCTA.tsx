@@ -139,7 +139,7 @@ const FinalCTA = () => {
   }
 
   return (
-    <section className="py-24 md:py-32 bg-gradient-hero">
+    <section id="waitlist-form" className="py-24 md:py-32 bg-gradient-hero">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16 animate-fade-in-up">
