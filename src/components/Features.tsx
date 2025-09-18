@@ -115,48 +115,48 @@ const Features = () => {
               <h3 className="text-2xl md:text-3xl font-bold mb-4 text-white">
                 Advanced Professional Capabilities
               </h3>
-              <p className="text-white/80 text-lg max-w-2xl mx-auto">
+              <p className="text-white/90 text-lg max-w-2xl mx-auto">
                 Enterprise-grade features designed for professional excellence
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="text-center">
-                <div className="p-3 rounded-xl bg-white/10 w-fit mx-auto mb-4">
+                <div className="p-3 rounded-xl bg-white/20 w-fit mx-auto mb-4">
                   <Brain className="w-6 h-6 text-white" />
                 </div>
                 <h4 className="font-semibold mb-2 text-white">Memory Network</h4>
-                <p className="text-sm text-white/80">
+                <p className="text-sm text-white/90">
                   Recalls insights from past meetings and creates network effects with team knowledge
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="p-3 rounded-xl bg-white/10 w-fit mx-auto mb-4">
+                <div className="p-3 rounded-xl bg-white/20 w-fit mx-auto mb-4">
                   <Shield className="w-6 h-6 text-white" />
                 </div>
                 <h4 className="font-semibold mb-2 text-white">Enterprise Security</h4>
-                <p className="text-sm text-white/80">
+                <p className="text-sm text-white/90">
                   Built-in privacy controls, consent management, and compliance
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="p-3 rounded-xl bg-white/10 w-fit mx-auto mb-4">
+                <div className="p-3 rounded-xl bg-white/20 w-fit mx-auto mb-4">
                   <Zap className="w-6 h-6 text-white" />
                 </div>
                 <h4 className="font-semibold mb-2 text-white">Zero Latency</h4>
-                <p className="text-sm text-white/80">
+                <p className="text-sm text-white/90">
                   Instant responses with perfect timing for natural conversation flow
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="p-3 rounded-xl bg-white/10 w-fit mx-auto mb-4">
+                <div className="p-3 rounded-xl bg-white/20 w-fit mx-auto mb-4">
                   <Users className="w-6 h-6 text-white" />
                 </div>
                 <h4 className="font-semibold mb-2 text-white">Team Sync</h4>
-                <p className="text-sm text-white/80">
+                <p className="text-sm text-white/90">
                   Multiple team members create aligned, accurate discussions
                 </p>
               </div>
