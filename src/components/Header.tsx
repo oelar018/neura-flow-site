@@ -1,0 +1,118 @@
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
+
+const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/40">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 md:h-20">
+          {/* Logo */}
+          <div className="flex items-center space-x-3">
+            <img 
+              src="/logo.png" 
+              alt="Neura AI" 
+              className="w-8 h-8 md:w-10 md:h-10"
+            />
+            <span className="text-xl md:text-2xl font-bold text-foreground">
+              Neura AI
+            </span>
+          </div>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8">
+            <a 
+              href="#problem" 
+              className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+            >
+              The Problem
+            </a>
+            <a 
+              href="#solution" 
+              className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+            >
+              Solution
+            </a>
+            <a 
+              href="#features" 
+              className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+            >
+              Features
+            </a>
+            <a 
+              href="#use-cases" 
+              className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+            >
+              Use Cases
+            </a>
+          </nav>
+
+          {/* CTA Button - Desktop */}
+          <div className="hidden md:block">
+            <Button variant="hero" size="lg">
+              Join the Waitlist
+            </Button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 rounded-lg hover:bg-muted/50 transition-colors"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          >
+            {isMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <nav className="md:hidden py-6 border-t border-border/40 bg-background/95 backdrop-blur-sm">
+            <div className="flex flex-col space-y-4">
+              <a 
+                href="#problem" 
+                className="text-muted-foreground hover:text-foreground transition-colors font-medium py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                The Problem
+              </a>
+              <a 
+                href="#solution" 
+                className="text-muted-foreground hover:text-foreground transition-colors font-medium py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Solution
+              </a>
+              <a 
+                href="#features" 
+                className="text-muted-foreground hover:text-foreground transition-colors font-medium py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Features
+              </a>
+              <a 
+                href="#use-cases" 
+                className="text-muted-foreground hover:text-foreground transition-colors font-medium py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Use Cases
+              </a>
+              <div className="pt-4">
+                <Button variant="hero" size="lg" className="w-full">
+                  Join the Waitlist
+                </Button>
+              </div>
+            </div>
+          </nav>
+        )}
+      </div>
+    </header>
+  );
+};
+
+export default Header;
