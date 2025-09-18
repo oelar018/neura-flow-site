@@ -24,28 +24,16 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <a 
-              href="#problem" 
+              href="#challenge-solution" 
               className="text-muted-foreground hover:text-foreground transition-colors font-medium"
             >
-              The Problem
-            </a>
-            <a 
-              href="#solution" 
-              className="text-muted-foreground hover:text-foreground transition-colors font-medium"
-            >
-              Solution
+              How It Works
             </a>
             <a 
               href="#features" 
               className="text-muted-foreground hover:text-foreground transition-colors font-medium"
             >
               Features
-            </a>
-            <a 
-              href="#use-cases" 
-              className="text-muted-foreground hover:text-foreground transition-colors font-medium"
-            >
-              Use Cases
             </a>
           </nav>
 
@@ -83,18 +71,11 @@ const Header = () => {
           <nav className="md:hidden py-6 border-t border-border/40 bg-background/95 backdrop-blur-sm">
             <div className="flex flex-col space-y-4">
               <a 
-                href="#problem" 
+                href="#challenge-solution" 
                 className="text-muted-foreground hover:text-foreground transition-colors font-medium py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                The Problem
-              </a>
-              <a 
-                href="#solution" 
-                className="text-muted-foreground hover:text-foreground transition-colors font-medium py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Solution
+                How It Works
               </a>
               <a 
                 href="#features" 
@@ -102,13 +83,6 @@ const Header = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Features
-              </a>
-              <a 
-                href="#use-cases" 
-                className="text-muted-foreground hover:text-foreground transition-colors font-medium py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Use Cases
               </a>
               <div className="pt-4">
                 <Button 

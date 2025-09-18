@@ -1,160 +1,145 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { 
-  Clock, 
-  Users, 
-  MessageSquare, 
-  Settings,
-  Brain,
-  Headphones
-} from "lucide-react";
-import modesInterface from "@/assets/modes-interface.png";
-import promptPhrases from "@/assets/prompt-phrases.png";
+import { Mic, Eye, Shield, Zap, Users, Brain } from "lucide-react";
 
 const Features = () => {
-  const features = [
-    {
-      icon: Brain,
-      title: "Remembers Your Meetings",
-      description: "Recalls insights from past meetings, emails, and calendars. Can include context from colleagues' meetings you didn't attend (with permissions) to create a network effect.",
-      delay: "0s"
-    },
-    {
-      icon: Users,
-      title: "Group Mode",
-      description: "When multiple teammates run Neura AI, the meeting stays aligned and accurate in real time, creating seamless team collaboration.",
-      delay: "0.2s"
-    },
-    {
-      icon: MessageSquare,
-      title: "Post-Meeting Guidance",
-      description: "Automatic summary plus coaching on what went well, what was missed, and how to improve next time for continuous professional development.",
-      delay: "0.4s"
-    },
-    {
-      icon: Settings,
-      title: "Discreet Activation",
-      description: "Configurable wake phrases (e.g., 'Let me think...') for hands-free help in the moment without disrupting conversation flow.",
-      delay: "0.6s",
-      image: promptPhrases
-    }
-  ];
-
   return (
-    <section id="features" className="py-24 md:py-32 bg-gradient-subtle">
+    <section id="features" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-6xl mx-auto">
+          
           {/* Section Header */}
-          <div className="text-center mb-16 animate-fade-in-up">
+          <div className="text-center mb-16">
             <Badge variant="outline" className="mb-6 px-4 py-2 text-primary border-primary/30">
-              Capabilities & Features
+              Features
             </Badge>
-            <h2 className="text-display font-bold text-balance mb-6">
-              Powerful Features for{" "}
-              <span className="text-gradient-primary">Professional Excellence</span>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              Two Modes. Endless Possibilities.
             </h2>
-            <p className="text-xl text-muted-foreground text-balance max-w-3xl mx-auto leading-relaxed">
-              Advanced AI capabilities designed specifically for professional conversations and continuous improvement.
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Choose your preferred way to receive AI-powered insights during conversations.
             </p>
           </div>
 
-          {/* Features Grid */}
+          {/* Main Features */}
           <div className="grid lg:grid-cols-2 gap-8 mb-16">
-            {features.map((feature, index) => (
-              <Card 
-                key={feature.title}
-                className="p-8 bg-gradient-card hover-lift hover:shadow-glow transition-all duration-500 animate-scale-in group"
-                style={{animationDelay: feature.delay}}
-              >
-                <div className="flex items-start gap-6">
-                  <div className="flex-shrink-0">
-                    <div className="p-4 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                      <feature.icon className="w-8 h-8 text-primary" />
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-semibold mb-4 group-hover:text-primary transition-colors">
-                      {feature.title}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed mb-6">
-                      {feature.description}
-                    </p>
-                    {feature.image && (
-                      <div className="rounded-lg overflow-hidden bg-background/50 p-4">
-                        <img 
-                          src={feature.image} 
-                          alt={`${feature.title} interface`}
-                          className="w-full h-auto rounded-md shadow-sm"
-                        />
-                      </div>
-                    )}
-                  </div>
+            
+            {/* Visual Mode */}
+            <Card className="p-8 bg-gradient-card hover-lift transition-all duration-500">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-3 rounded-lg bg-primary/10">
+                  <Eye className="w-8 h-8 text-primary" />
                 </div>
-              </Card>
-            ))}
-          </div>
-
-          {/* Modes Showcase */}
-          <div className="bg-gradient-hero rounded-3xl p-8 md:p-12 animate-fade-in-up" style={{animationDelay: "0.8s"}}>
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h3 className="text-title font-bold mb-6">
-                  Flexible Interaction Modes
-                </h3>
-                <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                  Choose how you want to receive AI assistance based on your situation and preferences. 
-                  Switch seamlessly between modes or use them simultaneously.
-                </p>
-                
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="p-2 rounded-lg bg-primary/10 flex-shrink-0">
-                      <MessageSquare className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-2">Visual Mode</h4>
-                      <p className="text-muted-foreground">Smart suggestions appear on screen with contextual information and actionable insights.</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-4">
-                    <div className="p-2 rounded-lg bg-accent/10 flex-shrink-0">
-                      <Headphones className="w-6 h-6 text-accent" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-2">Voice Mode</h4>
-                      <p className="text-muted-foreground">Discreet whispered guidance through earbuds, works even with phone in your pocket.</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-4">
-                    <div className="p-2 rounded-lg bg-primary/10 flex-shrink-0">
-                      <Clock className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-2">Adaptive Timing</h4>
-                      <p className="text-muted-foreground">AI learns your conversation patterns to deliver insights at the perfect moment.</p>
-                    </div>
-                  </div>
+                <div>
+                  <h3 className="text-2xl font-semibold">Visual Mode</h3>
+                  <p className="text-muted-foreground">See insights on your screen</p>
                 </div>
               </div>
               
-              <div className="relative">
-                <div className="bg-card/80 backdrop-blur-sm rounded-2xl shadow-brand-lg border border-border/20 p-6">
-                  <img 
-                    src={modesInterface} 
-                    alt="Neura AI modes interface showing listening setup" 
-                    className="w-full h-auto rounded-lg"
-                  />
-                  <div className="mt-4 text-center">
-                    <h4 className="font-semibold mb-2">Intuitive Setup</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Simple interface to configure your AI assistant preferences
-                    </p>
+              <div className="space-y-4">
+                <div className="bg-background/50 rounded-lg p-4">
+                  <div className="flex items-start gap-3">
+                    <Brain className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-medium text-sm mb-1">Smart Suggestions</p>
+                      <p className="text-xs text-muted-foreground">
+                        Contextual information appears exactly when needed
+                      </p>
+                    </div>
                   </div>
                 </div>
+                
+                <ul className="space-y-3 text-sm">
+                  <li className="flex items-center gap-3">
+                    <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                    <span>Real-time conversation analysis</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                    <span>Non-intrusive visual cues</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                    <span>Perfect for video calls and meetings</span>
+                  </li>
+                </ul>
               </div>
-            </div>
+            </Card>
+
+            {/* Voice Mode */}
+            <Card className="p-8 bg-gradient-card hover-lift transition-all duration-500">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-3 rounded-lg bg-accent/10">
+                  <Mic className="w-8 h-8 text-accent" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-semibold">Voice Mode</h3>
+                  <p className="text-muted-foreground">Hear whispered guidance</p>
+                </div>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="bg-background/50 rounded-lg p-4">
+                  <div className="flex items-start gap-3">
+                    <Mic className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-medium text-sm mb-1">Audio Assistance</p>
+                      <p className="text-xs text-muted-foreground">
+                        Discrete whispers only you can hear
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <ul className="space-y-3 text-sm">
+                  <li className="flex items-center gap-3">
+                    <div className="w-1.5 h-1.5 bg-accent rounded-full"></div>
+                    <span>Works with phone in pocket</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="w-1.5 h-1.5 bg-accent rounded-full"></div>
+                    <span>Completely invisible to others</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="w-1.5 h-1.5 bg-accent rounded-full"></div>
+                    <span>Ideal for in-person conversations</span>
+                  </li>
+                </ul>
+              </div>
+            </Card>
+          </div>
+
+          {/* Core Features Grid */}
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card className="p-6 text-center hover-lift transition-all duration-300">
+              <div className="p-3 rounded-lg bg-primary/10 w-fit mx-auto mb-4">
+                <Shield className="w-6 h-6 text-primary" />
+              </div>
+              <h4 className="font-semibold mb-2">Enterprise Security</h4>
+              <p className="text-sm text-muted-foreground">
+                Built-in privacy controls and enterprise-grade security
+              </p>
+            </Card>
+
+            <Card className="p-6 text-center hover-lift transition-all duration-300">
+              <div className="p-3 rounded-lg bg-accent/10 w-fit mx-auto mb-4">
+                <Zap className="w-6 h-6 text-accent" />
+              </div>
+              <h4 className="font-semibold mb-2">Zero Latency</h4>
+              <p className="text-sm text-muted-foreground">
+                Instant responses with no noticeable delay in conversation
+              </p>
+            </Card>
+
+            <Card className="p-6 text-center hover-lift transition-all duration-300">
+              <div className="p-3 rounded-lg bg-primary/10 w-fit mx-auto mb-4">
+                <Users className="w-6 h-6 text-primary" />
+              </div>
+              <h4 className="font-semibold mb-2">Team Collaboration</h4>
+              <p className="text-sm text-muted-foreground">
+                Seamless integration when multiple team members use Neura AI
+              </p>
+            </Card>
           </div>
         </div>
       </div>
