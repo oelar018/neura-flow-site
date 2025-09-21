@@ -1,154 +1,71 @@
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { CheckCircle, Shield, Users, Brain, Mic, Eye } from "lucide-react";
+import { Play } from "lucide-react";
+import HexHeroBackground from "./HexHeroBackground";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-hero overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,hsl(189,85%,68%,0.1),transparent)]"></div>
+    <section className="relative min-h-[100vh] flex items-center justify-center bg-gradient-hero overflow-hidden">
+      {/* Interactive Hex Background */}
+      <HexHeroBackground 
+        rings={14}
+        dotSize={6}
+        glowStrength={1.2}
+        className="opacity-60"
+      />
       
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-        <div className="max-w-4xl mx-auto text-center">
-          
-          {/* Trust Badges */}
-          <div className="flex flex-wrap justify-center gap-3 mb-8">
-            <Badge variant="secondary" className="flex items-center gap-2 px-4 py-2 text-sm">
-              <Users className="w-4 h-4" />
-              Built for professionals
-            </Badge>
-            <Badge variant="secondary" className="flex items-center gap-2 px-4 py-2 text-sm">
-              <Shield className="w-4 h-4" />
-              Enterprise secure
-            </Badge>
-            <Badge variant="secondary" className="flex items-center gap-2 px-4 py-2 text-sm">
-              <CheckCircle className="w-4 h-4" />
-              Privacy first
-            </Badge>
-          </div>
-
-          {/* Headline */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
-            AI That Gives You Answers{" "}
-            <span className="text-gradient-primary">Without Breaking Flow</span>
+      {/* Aurora gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-aurora opacity-40" />
+      
+      {/* Subtle glow effects */}
+      <div className="absolute top-1/3 left-1/3 w-96 h-96 bg-gradient-glow rounded-full blur-3xl animate-pulse opacity-30" />
+      <div className="absolute bottom-1/3 right-1/3 w-96 h-96 bg-gradient-glow rounded-full blur-3xl animate-pulse delay-1000 opacity-20" />
+      
+      <div className="container relative z-10 px-4 py-20 mx-auto text-center">
+        <div className="max-w-4xl mx-auto space-y-8 animate-fade-in">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight">
+            <span className="bg-gradient-to-r from-foreground via-primary to-primary-glow bg-clip-text text-transparent animate-glow">
+              Transform Your Conversations
+            </span>
+            <br />
+            <span className="text-primary animate-float-gentle">
+              with AI Precision
+            </span>
           </h1>
-
-          {/* Subheading */}
-          <p className="text-xl md:text-2xl text-muted-foreground mb-12 leading-relaxed max-w-3xl mx-auto">
-            Get just-in-time intelligence that appears precisely when you need it. 
-            Works even with your phone asleep in your pocket.
+          
+          <p className="text-lg md:text-xl text-foreground-muted max-w-2xl mx-auto leading-relaxed">
+            Experience the future of communication with our advanced AI assistant that understands context, maintains perfect recall, and delivers enterprise-grade security.
           </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
             <Button 
-              variant="hero" 
-              size="xl" 
-              className="group"
-              onClick={() => {
-                document.getElementById('waitlist-form')?.scrollIntoView({ 
-                  behavior: 'smooth' 
-                });
-              }}
+              size="lg" 
+              className="px-8 py-6 text-lg font-semibold bg-primary hover:bg-primary-glow text-primary-foreground shadow-2xl hover:shadow-primary/25 transition-all duration-300 hover:scale-105 animate-glow"
             >
-              Join the Waitlist
-              <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+              Get Started Free
             </Button>
             <Button 
-              variant="outline-hero" 
-              size="xl"
-              onClick={() => {
-                document.getElementById('challenge-solution')?.scrollIntoView({ 
-                  behavior: 'smooth' 
-                });
-              }}
+              variant="outline" 
+              size="lg" 
+              className="px-8 py-6 text-lg font-semibold border-2 border-primary/20 hover:border-primary/40 bg-glass-bg hover:bg-primary/5 text-foreground backdrop-blur-sm transition-all duration-300 hover:scale-105 group glass-noise"
             >
-              See How It Works
+              <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform text-primary" />
+              Watch Demo
             </Button>
           </div>
-
-          {/* Product Modes Preview */}
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            
-            {/* Visual Mode */}
-            <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-6 border border-border/20 hover-lift transition-all duration-500">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-primary/10">
-                  <Eye className="w-6 h-6 text-primary" />
-                </div>
-                <div className="text-left">
-                  <h3 className="font-semibold">Visual Mode</h3>
-                  <p className="text-sm text-muted-foreground">On-screen suggestions</p>
-                </div>
-              </div>
-              
-              <div className="bg-background/50 rounded-lg p-4 text-left">
-                <div className="space-y-3">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                    <span className="text-sm font-medium">Live Analysis</span>
-                  </div>
-                  <div className="bg-primary/10 border border-primary/20 rounded-lg p-3">
-                    <div className="flex items-start gap-2">
-                      <Brain className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                      <div>
-                        <p className="text-xs font-medium">Smart Suggestion</p>
-                        <p className="text-xs text-muted-foreground">
-                          "Q3 revenue grew 23.5% to $2.4M"
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          
+          <div className="pt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div className="space-y-2 p-4 rounded-lg bg-glass-bg backdrop-blur-sm border border-glass-border glass-noise">
+              <div className="text-2xl md:text-3xl font-bold text-primary-glow">99.9%</div>
+              <div className="text-sm text-foreground-muted">Uptime Guarantee</div>
             </div>
-
-            {/* Voice Mode */}
-            <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-6 border border-border/20 hover-lift transition-all duration-500">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-accent/10">
-                  <Mic className="w-6 h-6 text-accent" />
-                </div>
-                <div className="text-left">
-                  <h3 className="font-semibold">Voice Mode</h3>
-                  <p className="text-sm text-muted-foreground">Whispered guidance</p>
-                </div>
-              </div>
-              
-              <div className="bg-background/50 rounded-lg p-4 text-left">
-                <div className="space-y-3">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
-                    <span className="text-sm font-medium">Audio Ready</span>
-                  </div>
-                  <div className="bg-accent/10 border border-accent/20 rounded-lg p-3">
-                    <div className="flex items-start gap-2">
-                      <Mic className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
-                      <div>
-                        <p className="text-xs font-medium italic">Whispered Insight</p>
-                        <p className="text-xs text-muted-foreground">
-                          "Ask about their expansion plans"
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div className="space-y-2 p-4 rounded-lg bg-glass-bg backdrop-blur-sm border border-glass-border glass-noise">
+              <div className="text-2xl md:text-3xl font-bold text-primary-glow">&lt; 50ms</div>
+              <div className="text-sm text-foreground-muted">Response Time</div>
             </div>
-          </div>
-
-          {/* Coming Soon Notice */}
-          <div className="mt-12 pt-8 border-t border-border/20">
-            <p className="text-muted-foreground">
-              <strong>Coming Soon</strong> — Join the waitlist to be first in line for early access
-            </p>
-          </div>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-muted-foreground/50 rounded-full mt-2 animate-pulse"></div>
+            <div className="space-y-2 p-4 rounded-lg bg-glass-bg backdrop-blur-sm border border-glass-border glass-noise">
+              <div className="text-2xl md:text-3xl font-bold text-primary-glow">150k+</div>
+              <div className="text-sm text-foreground-muted">Conversations Processed</div>
+            </div>
           </div>
         </div>
       </div>
